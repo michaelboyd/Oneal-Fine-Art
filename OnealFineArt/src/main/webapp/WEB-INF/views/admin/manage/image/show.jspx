@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show create="false" id="ps_com_art_fine_oneal_domain_Image" list="false" object="${image}" path="/admin/manage/image" z="user-managed">
+        <img src="/OnealFineArt/renderimage/get?id=${imageId}" style="padding-bottom: 5px;"/>
+        <div id="_artist">
+            <label for="_artist">Artist :</label>
+            <c:out value="${image.artwork.artist}"/>
+        </div>
+        <br/>
+        <div id="_artist">
+            <label for="_artist">Artwork :</label>
+            <c:out value="${image.artwork}"/>
+        </div>
+        <br/>
+        <field:display field="artwork" id="s_com_art_fine_oneal_domain_Image_artwork" object="${image}" render="false" z="user-managed"/>
+        <field:display field="imageFiles" id="s_com_art_fine_oneal_domain_Image_imageFiles" object="${image}" render="false" z="user-managed"/>
+        <field:display field="file" id="s_com_art_fine_oneal_domain_Image_file" object="${image}" render="false" z="user-managed"/>
+        <field:display field="imageType" id="s_com_art_fine_oneal_domain_Image_imageType" object="${image}" z="EKok2oewclYfrZeHvGodyhqTNuE="/>
+        <field:display date="true" dateTimePattern="${image_createdate_date_format}" field="createDate" id="s_com_art_fine_oneal_domain_Image_createDate" object="${image}" z="K002N1v+DyyhTPzqNQmoln9506I="/>
+        <field:display field="thumbImageId" id="s_com_art_fine_oneal_domain_Image_thumbImageId" object="${image}" render="false" z="user-managed"/>
+        <field:display field="bigImageId" id="s_com_art_fine_oneal_domain_Image_bigImageId" object="${image}" render="false" z="user-managed"/>
+        <field:display field="fullSizeImageId" id="s_com_art_fine_oneal_domain_Image_fullSizeImageId" object="${image}" render="false" z="user-managed"/>
+    </page:show>
+</div>

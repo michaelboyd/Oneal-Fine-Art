@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="admin" name="admin/manage/artist/list">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/artist/list.jspx"/>
+        <put-attribute name="title" value="List Artists"/>
+    </definition>
+
+	<definition extends="admin" name="admin/manage/artist/show">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/artist/show.jspx"/>
+        <put-attribute name="title" value="Show Artist"/>
+    </definition>
+
+	<definition extends="admin" name="admin/manage/artist/create">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/artist/create.jspx"/>
+        <put-attribute name="title" value="Create Artist"/>
+    </definition>
+	
+	<definition extends="admin" name="admin/manage/artist/update">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/artist/update.jspx"/>
+        <put-attribute name="title" value="Update Artist"/>
+    </definition>
+</tiles-definitions>

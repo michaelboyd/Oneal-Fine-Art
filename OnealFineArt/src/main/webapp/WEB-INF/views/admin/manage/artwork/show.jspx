@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_art_fine_oneal_domain_Artwork" object="${artwork}" path="/admin/manage/artwork" z="4aYGxrPSmRNtZoZSSdWqg5y5hNU=">
+        <c:if test="${artwork.bigImageId != null}">
+            <p>
+                <img src="/OnealFineArt/renderimage/get?id=${artwork.bigImageId}" title="${artwork.artist.name} ${artwork.title}"/>
+            </p>
+        </c:if>
+        <field:display field="artist" id="s_com_art_fine_oneal_domain_Artwork_artist" object="${artwork}" render="false" z="user-managed"/>
+        <div id="_artist">
+            <label for="_artist">Artist : </label>
+            <a href="/OnealFineArt/admin/manage/artist/${artwork.artist.id}">
+                <c:out value="${artwork.artist}"/>
+            </a>
+        </div>
+        <br/>
+        <field:display field="title" id="s_com_art_fine_oneal_domain_Artwork_title" object="${artwork}" z="DaAIYzz79SCv5brSk/XuAOZZT00="/>
+        <c:if test="${artwork.description != ''}">
+            <field:display field="description" id="s_com_art_fine_oneal_domain_Artwork_description" object="${artwork}" z="1eF9U1TxKHpcdM+rfVu9Vk9jtmI="/>
+        </c:if>
+        <field:display field="size" id="s_com_art_fine_oneal_domain_Artwork_size" object="${artwork}" z="HR1T04jjH/HBBhvwzBiDX82oFy4="/>
+        <field:display field="height" id="s_com_art_fine_oneal_domain_Artwork_height" object="${artwork}" render="false" z="user-managed"/>
+        <field:display field="width" id="s_com_art_fine_oneal_domain_Artwork_width" object="${artwork}" render="false" z="user-managed"/>
+        <field:display field="price" id="s_com_art_fine_oneal_domain_Artwork_price" object="${artwork}" render="false" z="user-managed"/>
+        <div id="_price">
+            <label for="_price">Price : </label>
+            <fmt:formatNumber currencyCode="US" currencySymbol="en" minFractionDigits="2" value="${artwork.price}"/>
+        </div>
+        <br/>
+        <field:display field="negotiable" id="s_com_art_fine_oneal_domain_Artwork_negotiable" object="${artwork}" z="6BFLDvIgTc+NF11ASse+7nE2Th4="/>
+        <field:display field="images" id="s_com_art_fine_oneal_domain_Artwork_images" object="${artwork}" render="false" z="user-managed"/>
+        <field:display field="framed" id="s_com_art_fine_oneal_domain_Artwork_framed" object="${artwork}" z="poPg1rhYVDNhGGCWXbpX4E+KSL0="/>
+        <field:display field="specialGroups" id="s_com_art_fine_oneal_domain_Artwork_specialGroups" object="${artwork}" render="false" z="user-managed"/>
+        <div id="_specialgroup">
+            <label for="_specialgroup">Special Groups : </label>
+            <c:out value="${artwork.specialGroups}"/>
+        </div>
+        <br/>
+        <div id="_c_com_art_fine_oneal_domain_Artwork_images_id">
+            <label for="_Images_id">Create Image : </label>
+            <a href="/OnealFineArt/admin/manage/image?form&amp;artworkId=${artwork.id}">
+                <img alt="Create new Images" src="/OnealFineArt/resources/images/add.png" title="Create new Image"/>
+            </a>
+        </div>
+        <br/>
+        <field:display date="true" dateTimePattern="${artwork_createdate_date_format}" field="createDate" id="s_com_art_fine_oneal_domain_Artwork_createDate" object="${artwork}" z="Fpltyw0UV8RLnIbJVgP06lLJUPo="/>
+        <field:display field="thumbImageId" id="s_com_art_fine_oneal_domain_Artwork_thumbImageId" object="${artwork}" render="false" z="user-managed"/>
+        <c:if test="${not empty artwork.images}">
+            <div id="s_com_art_fine_oneal_domain_Artwork_images">
+                <label for="_images">All Images :</label>
+                <table>
+                    <thead>
+                        <tr>
+                            <th/>
+                            <th>Type</th>
+                            <th>Create Date</th>
+                            <th/>
+                            <th/>
+                            <th/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${artwork.images}" var="image">
+                            <tr>
+                                <td align="center">
+                                    <spring:url value="/admin/manage/image/${image.id}" var="show_form_url"/>
+                                    <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                                    <spring:message arguments="${image.imageType}" code="entity_show" htmlEscape="false" var="show_label"/>
+                                    <a alt="${fn:escapeXml(show_label)}" href="${fn:escapeXml(show_form_url)}" title="${fn:escapeXml(show_label)}">
+                                        <img alt="${fn:escapeXml(show_label)}" class="image" src="/OnealFineArt/renderimage/get?id=${image.thumbImageId}" title="${fn:escapeXml(show_label)}"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <c:out value="${image.imageType}"/>
+                                </td>
+                                <td>
+                                    <fmt:formatDate pattern="MM-dd-yyyy" value="${image.createDate}"/>
+                                </td>
+                                <td class="utilbox">
+                                    <spring:url value="/admin/manage/image/${image.id}" var="show_form_url"/>
+                                    <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                                    <spring:message arguments="Image" code="entity_show" htmlEscape="false" var="show_label"/>
+                                    <a alt="${fn:escapeXml(show_label)}" href="${fn:escapeXml(show_form_url)}" title="${fn:escapeXml(show_label)}">
+                                        <img alt="${fn:escapeXml(show_label)}" class="image" src="${fn:escapeXml(show_image_url)}" title="${fn:escapeXml(show_label)}"/>
+                                    </a>
+                                </td>
+                                <td class="utilbox">
+                                    <spring:url value="/admin/manage/image/${image.id}" var="update_form_url">
+                                        <spring:param name="form"/>
+                                    </spring:url>
+                                    <spring:url value="/resources/images/update.png" var="update_image_url"/>
+                                    <spring:message arguments="Image" code="entity_update" htmlEscape="false" var="update_label"/>
+                                    <a alt="${fn:escapeXml(update_label)}" href="${fn:escapeXml(update_form_url)}" title="${fn:escapeXml(update_label)}">
+                                        <img alt="${fn:escapeXml(update_label)}" class="image" src="${fn:escapeXml(update_image_url)}" title="${fn:escapeXml(update_label)}"/>
+                                    </a>
+                                </td>
+                                <td class="utilbox">
+                                    <spring:url value="/admin/manage/image/${image.id}" var="delete_form_url"/>
+                                    <spring:url value="/resources/images/delete.png" var="delete_image_url"/>
+                                    <form:form action="${fn:escapeXml(delete_form_url)}" method="DELETE">
+                                        <spring:message arguments="Image" code="entity_delete" htmlEscape="false" var="delete_label"/>
+                                        <c:set var="delete_confirm_msg">
+                                            <spring:escapeBody javaScriptEscape="true">
+                                                <spring:message code="entity_delete_confirm"/>
+                                            </spring:escapeBody>
+                                        </c:set>
+                                        <input alt="${fn:escapeXml(delete_label)}" class="image" onclick="return confirm('${delete_confirm_msg}');" src="${fn:escapeXml(delete_image_url)}" title="${fn:escapeXml(delete_label)}" type="image" value="${fn:escapeXml(delete_label)}"/>
+                                        <c:if test="${not empty param.page}">
+                                            <input name="page" type="hidden" value="1"/>
+                                        </c:if>
+                                        <c:if test="${not empty param.size}">
+                                            <input name="size" type="hidden" value="${fn:escapeXml(param.size)}"/>
+                                        </c:if>
+                                    </form:form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+        </c:if>
+        <field:display field="bigImageId" id="s_com_art_fine_oneal_domain_Artwork_bigImageId" object="${artwork}" render="false" z="user-managed"/>
+        <field:display field="fullSizeImageId" id="s_com_art_fine_oneal_domain_Artwork_fullSizeImageId" object="${artwork}" z="1w6cFuJN0yg403yzUHujMbWAJK8="/>
+    </page:show>
+</div>

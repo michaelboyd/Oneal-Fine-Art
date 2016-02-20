@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_art_fine_oneal_domain_Artist" items="${artists}" z="xRyAPAy7/F71GU/2QuqYtqR05QA=">
+        <table:table data="${artists}" id="l_com_art_fine_oneal_domain_Artist" path="/admin/manage/artist" z="hJfrsS9Y0nKf+lroFO2uepni2rM=">
+            <table:column id="c_com_art_fine_oneal_domain_Artist_name" label="Artist Name" property="name" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artist_firstName" property="firstName" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artist_middleName" property="middleName" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artist_lastName" property="lastName" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artist_biography" property="biography" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artist_artworks" property="artworks" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artist_artCount" label="Artwork Count" property="artCount" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artist_hasOtherAvailable" label="Has More" property="hasOtherAvailable" z="user-managed"/>
+            <table:column date="true" dateTimePattern="${artist_createdate_date_format}" id="c_com_art_fine_oneal_domain_Artist_createDate" property="createDate" z="DVeu9zQ+VvTQPQ37DI59rsklPXw="/>
+        </table:table>
+    </page:list>
+</div>

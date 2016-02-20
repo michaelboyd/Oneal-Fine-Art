@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="admin" name="admin/manage/siteinfo/list">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/siteinfo/list.jspx"/>
+        <put-attribute name="title" value="List Site Info"/>
+    </definition>
+<definition extends="admin" name="admin/manage/siteinfo/show">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/siteinfo/show.jspx"/>
+        <put-attribute name="title" value="Show Site Info"/>
+    </definition>
+<definition extends="admin" name="admin/manage/siteinfo/create">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/siteinfo/create.jspx"/>
+        <put-attribute name="title" value="Create Site Info"/>
+    </definition>
+<definition extends="admin" name="admin/manage/siteinfo/update">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/siteinfo/update.jspx"/>
+        <put-attribute name="title" value="Update Site Info"/>
+    </definition>
+<definition extends="default" name="admin/manage/siteinfo/findSiteInfoesByInfoType">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/siteinfo/findSiteInfoesByInfoType.jspx"/>
+    </definition>
+</tiles-definitions>

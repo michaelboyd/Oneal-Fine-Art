@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_art_fine_oneal_domain_Artwork" items="${artworks}" z="MZcwcsHbZwuMFlqjyDgeL0DgmZg=">
+        <table:table data="${artworks}" id="l_com_art_fine_oneal_domain_Artwork" path="/admin/manage/artwork" render="false" z="user-managed">
+            <table:column id="c_com_art_fine_oneal_domain_Artwork_title" property="title" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artwork_description" property="description" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artwork_width" property="width" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artwork_height" property="height" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artwork_artist" property="artist" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Artwork_size" property="size" render="false" z="user-managed"/>
+        </table:table>
+        <table>
+            <thead>
+                <tr>
+                    <th/>
+                    <th>Size</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Price</th>
+                    <th/>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${artworks}" var="artwork">
+                    <tr>
+                        <td align="center">
+                            <c:if test="${artwork.thumbImageId != null}">
+                                <spring:url value="/gallery/artwork/${artwork.id}" var="show_form_url"/>
+                                <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                                <spring:message arguments="${artwork.artist.name}: ${artwork.title}" code="entity_show" htmlEscape="false" var="show_label"/>
+                                <a alt="${fn:escapeXml(show_label)}" href="${fn:escapeXml(show_form_url)}" title="${fn:escapeXml(show_label)}">
+                                    <img alt="${fn:escapeXml(show_label)}" class="image" src="/OnealFineArt/renderimage/get?id=${artwork.thumbImageId}" title="${fn:escapeXml(show_label)}"/>
+                                </a>
+                            </c:if>
+                            <c:if test="${artwork.thumbImageId == null}">
+                            	No Picture
+                            </c:if>
+                        </td>
+                        <td style="width: 60px;">
+                            <c:out value="${artwork.size}"/>
+                        </td>
+                        <td>
+                            <c:out value="${artwork.title}"/>
+                        </td>
+                        <td>
+                            <c:out value="${artwork.artist.name}"/>
+                        </td>
+                        <td>
+                        	$<fmt:formatNumber currencyCode="US" currencySymbol="en" minFractionDigits="2" value="${artwork.price}"/>
+                        	<c:if test="${artwork.negotiable}"><div>(negotiable)</div></c:if>
+                        </td>
+                        <td class="utilbox">
+                        	<spring:url value="/gallery/artwork/${artwork.id}" var="show_form_url"/>
+                            <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                            <spring:message arguments="${artwork.artist.name}: ${artwork.title}" code="entity_show" htmlEscape="false" var="show_label"/>
+                            <a alt="${fn:escapeXml(show_label)}" href="${fn:escapeXml(show_form_url)}" title="${fn:escapeXml(show_label)}">
+                                <img alt="${fn:escapeXml(show_label)}" class="image" src="${fn:escapeXml(show_image_url)}" title="${fn:escapeXml(show_label)}"/>
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </page:list>
+</div>

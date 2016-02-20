@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_art_fine_oneal_domain_Artist" object="${artist}" path="/admin/manage/artist" z="9J36XjdmmJ67pIv1Javjbc3WI2o=">
+        <field:display field="name" id="s_com_art_fine_oneal_domain_Artist_name" label="Artist Name" object="${artist}" z="user-managed"/>
+        <field:display field="firstName" id="s_com_art_fine_oneal_domain_Artist_firstName" object="${artist}" render="false" z="user-managed"/>
+        <field:display field="middleName" id="s_com_art_fine_oneal_domain_Artist_middleName" object="${artist}" render="false" z="user-managed"/>
+        <field:display field="lastName" id="s_com_art_fine_oneal_domain_Artist_lastName" object="${artist}" render="false" z="user-managed"/>
+        <field:display field="biography" id="s_com_art_fine_oneal_domain_Artist_biography" object="${artist}" z="NxTGkX1yBYsJ5yJ0qkOnQc3clWI="/>
+        <c:if test="${empty artist.biography}">
+            <br/>
+        </c:if>
+        <field:display field="hasOtherAvailable" id="s_com_art_fine_oneal_domain_Artist_hasOtherAvailable" label="Has More" object="${artist}" z="user-managed"/>
+        <field:display field="artworks" id="s_com_art_fine_oneal_domain_Artist_artworks" object="${artist}" render="false" z="user-managed"/>
+        <div id="_c_com_art_fine_oneal_domain_Artist_artworks_id">
+            <label for="_Artworks_id">Create Artwork : </label>
+            <a href="/OnealFineArt/admin/manage/artwork?form&amp;artistId=${artist.id}">
+                <img alt="Create Artwork" src="/OnealFineArt/resources/images/add.png" title="Create Artwork"/>
+            </a>
+        </div>
+        <br/>
+        <field:display date="true" dateTimePattern="${artist_createdate_date_format}" field="createDate" id="s_com_art_fine_oneal_domain_Artist_createDate" object="${artist}" z="P7d2fjyXlAG832slUjlcuOXpUok="/>
+        <c:if test="${not empty artist.artworks}">
+            <div id="s_com_art_fine_oneal_domain_Artwork_images">
+                <label for="_images">Artworks</label>
+                <br/>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Main Picture</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Create Date</th>
+                            <th/>
+                            <th/>
+                            <th/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${artist.artworks}" var="artwork">
+                            <tr>
+                                <td>
+                                    <c:out value="${artwork.title}"/>
+                                </td>
+                                <td align="center">
+                                    <c:if test="${artwork.thumbImageId != null}">
+                                        <spring:url value="/admin/manage/artwork/${artwork.id}" var="show_form_url"/>
+                                        <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                                        <spring:message arguments="${artwork.title}" code="entity_show" htmlEscape="false" var="show_label"/>
+                                        <a alt="${fn:escapeXml(show_label)}" href="${fn:escapeXml(show_form_url)}" title="${fn:escapeXml(show_label)}">
+                                            <img alt="${fn:escapeXml(show_label)}" class="image" src="/OnealFineArt/renderimage/get?id=${artwork.thumbImageId}" title="${fn:escapeXml(show_label)}"/>
+                                        </a>
+                                    </c:if>
+                                </td>
+                                <td>
+                                    <c:out value="${artwork.size}"/>
+                                </td>
+                                <td>
+                                    <fmt:formatNumber currencyCode="US" currencySymbol="en" minFractionDigits="2" value="${artwork.price}"/>
+                                </td>
+                                <td>
+                                    <fmt:formatDate value="${artwork.createDate}" pattern="MM-dd-yyyy"/>
+                                </td>
+		                        <td class="utilbox">
+		                        	<spring:url value="/admin/manage/artwork/${artwork.id}" var="show_form_url"/>
+		                            <spring:url value="/resources/images/show.png" var="show_image_url"/>
+		                            <spring:message arguments="Artwork" code="entity_show" htmlEscape="false" var="show_label"/>
+		                            <a alt="${fn:escapeXml(show_label)}" href="${fn:escapeXml(show_form_url)}" title="${fn:escapeXml(show_label)}">
+		                                <img alt="${fn:escapeXml(show_label)}" class="image" src="${fn:escapeXml(show_image_url)}" title="${fn:escapeXml(show_label)}"/>
+		                            </a>
+		                        </td>
+                                <td class="utilbox">
+                                    <spring:url value="/admin/manage/artwork/${artwork.id}" var="update_form_url">
+                                        <spring:param name="form"/>
+                                    </spring:url>
+                                    <spring:url value="/resources/images/update.png" var="update_image_url"/>
+                                    <spring:message arguments="Artwork" code="entity_update" htmlEscape="false" var="update_label"/>
+                                    <a alt="${fn:escapeXml(update_label)}" href="${fn:escapeXml(update_form_url)}" title="${fn:escapeXml(update_label)}">
+                                        <img alt="${fn:escapeXml(update_label)}" class="image" src="${fn:escapeXml(update_image_url)}" title="${fn:escapeXml(update_label)}"/>
+                                    </a>
+                                </td>
+                                <td class="utilbox">
+                                    <spring:url value="/admin/manage/artwork/${artwork.id}" var="delete_form_url"/>
+                                    <spring:url value="/resources/images/delete.png" var="delete_image_url"/>
+                                    <form:form action="${fn:escapeXml(delete_form_url)}" method="DELETE">
+                                        <spring:message arguments="Artwork" code="entity_delete" htmlEscape="false" var="delete_label"/>
+                                        <c:set var="delete_confirm_msg">
+                                            <spring:escapeBody javaScriptEscape="true">
+                                                <spring:message code="entity_delete_confirm"/>
+                                            </spring:escapeBody>
+                                        </c:set>
+                                        <input alt="${fn:escapeXml(delete_label)}" class="image" onclick="return confirm('${delete_confirm_msg}');" src="${fn:escapeXml(delete_image_url)}" title="${fn:escapeXml(delete_label)}" type="image" value="${fn:escapeXml(delete_label)}"/>
+                                        <c:if test="${not empty param.page}">
+                                            <input name="page" type="hidden" value="1"/>
+                                        </c:if>
+                                        <c:if test="${not empty param.size}">
+                                            <input name="size" type="hidden" value="${fn:escapeXml(param.size)}"/>
+                                        </c:if>
+                                    </form:form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                <br/>
+            </div>
+        </c:if>
+        <field:display field="artCount" id="s_com_art_fine_oneal_domain_Artist_artCount" object="${artist}" render="false" z="user-managed"/>
+    </page:show>
+</div>

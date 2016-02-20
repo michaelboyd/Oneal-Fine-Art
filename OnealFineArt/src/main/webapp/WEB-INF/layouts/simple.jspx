@@ -1,0 +1,62 @@
+<html xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:spring="http://www.springframework.org/tags">
+<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<head>
+	<util:load-scripts />
+	
+	<script type="text/javascript">
+		dojo.require("dojo.NodeList-traverse");
+		var count = 0;
+		var currentItem = 1;
+		dojo.ready(function(){
+			count = dojo.query("img", "dojo-slideshow").length;
+			setDecription(dojo.query(".active-image").attr("title"))
+			setInterval("dojoSlideShow()", 3000);
+		});
+		function dojoSlideShow(){
+			
+			var active = dojo.query(".active-image");
+			var next = active.next("img");
+			active.removeClass();
+			if(next == "") {
+				currentItem = 0;
+				next = dojo.query("#dojo-slideshow img").first();
+			}
+			currentItem++;
+			next.addClass("active-image");
+			setDecription(next.attr("title"));
+			
+		}
+
+		function setDecription(title) {
+			dojo.byId("slideshow-desc").innerHTML = "(" + currentItem + " of " + count + ") " + title;
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<div id="dojo-slideshow">
+
+		<img
+			src="http://localhost:8080/OnealFineArt/resources/images/slideshow/01.jpg"
+			title="Image 1" class="active-image" /> <img
+			src="http://localhost:8080/OnealFineArt/resources/images/slideshow/02.jpg"
+			title="Image 2" /> <img
+			src="http://localhost:8080/OnealFineArt/resources/images/slideshow/03.jpg"
+			title="Image 3" /> <img
+			src="http://localhost:8080/OnealFineArt/resources/images/slideshow/04.jpg"
+			title="Image 4" /> <img
+			src="http://localhost:8080/OnealFineArt/resources/images/slideshow/05.jpg"
+			title="Image 5" /> <img
+			src="http://localhost:8080/OnealFineArt/resources/images/slideshow/06.jpg"
+			title="Image 6" /> <img
+			src="http://localhost:8080/OnealFineArt/resources/images/slideshow/07.jpg"
+			title="Image 7" />
+
+		<div id="slideshow-desc"></div>
+	</div>
+
+	<tiles:insertAttribute name="body" />
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:find finderName="ByArtwork" id="ff_com_art_fine_oneal_domain_Image" path="/admin/manage/image" z="stbcCQFybG5ZO076PbuKMQtu878=">
+        <field:select disableFormBinding="true" field="artwork" id="f_com_art_fine_oneal_domain_Image_artwork" itemValue="id" items="${artworks}" path="/artworks" required="true" z="GyBoOzytqoIcLIj16OAJJ4rvW1g="/>
+    </form:find>
+</div>

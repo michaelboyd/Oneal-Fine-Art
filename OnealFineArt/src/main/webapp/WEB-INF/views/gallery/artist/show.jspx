@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show create="false" delete="false" list="false" update="false" id="ps_com_art_fine_oneal_domain_Artist" object="${artist}" path="/admin/manage/artist" z="9J36XjdmmJ67pIv1Javjbc3WI2o=">
+        <field:display field="name" id="s_com_art_fine_oneal_domain_Artist_name" label="Artist Name" object="${artist}" z="user-managed"/>
+        <c:if test="${not empty artist.biography}">
+        	<field:display field="biography" id="s_com_art_fine_oneal_domain_Artist_biography" object="${artist}" z="NxTGkX1yBYsJ5yJ0qkOnQc3clWI="/>
+        </c:if>
+        <c:if test="${artist.hasOtherAvailable}">
+        <div>
+            <label for="_otherInfo">Other Info : </label>
+            <div id="_otherInfo">
+            	Other works available. More information upon request.            	
+            </div>
+        </div>
+        <br/>
+        </c:if>
+        
+        <c:if test="${not empty artist.artworks}">
+            <div id="s_com_art_fine_oneal_domain_Artwork_images">
+                <table>
+                    <thead>
+                        <tr>	
+                        	<th>Picture</th>
+                            <th>Title</th>
+                            <th>Size</th>
+                            <th>Framed</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${artist.artworks}" var="artwork">
+                            <tr>
+                                <td align="center">
+                                    <c:if test="${artwork.thumbImageId != null}">
+                                        <spring:url value="/gallery/artwork/${artwork.id}" var="show_form_url"/>
+                                        <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                                        <spring:message arguments="${artwork.artist.name}: ${artwork.title}" code="entity_show" htmlEscape="false" var="show_label"/>
+                                        <a alt="${fn:escapeXml(show_label)}" href="${fn:escapeXml(show_form_url)}" title="${fn:escapeXml(show_label)}">
+                                            <img alt="${fn:escapeXml(show_label)}" class="image" src="/OnealFineArt/renderimage/get?id=${artwork.thumbImageId}" title="${fn:escapeXml(show_label)}"/>
+                                        </a>
+                                    </c:if>
+	                                <c:if test="${artwork.thumbImageId == null}">
+        		                    	No Picture
+                		            </c:if>
+                                </td>
+                                <td align="center">
+                                    <c:out value="${artwork.title}"/>
+                                </td>
+                                <td align="center">
+                                    <c:out value="${artwork.size}"/>
+                                </td>
+                                <td align="center">
+						            <c:if test="${artwork.framed}">Yes</c:if>
+            						<c:if test="${!artwork.framed}">No</c:if>
+                                </td>
+                                <td align="center">
+                                    <fmt:formatNumber currencyCode="US" currencySymbol="en" minFractionDigits="2" value="${artwork.price}"/>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </c:if>
+    </page:show>
+</div>

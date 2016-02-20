@@ -1,0 +1,21 @@
+<html xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:spring="http://www.springframework.org/tags">
+<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<head>
+	<script> 
+		djConfig = { parseOnLoad: true };
+	</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" type="text/javascript"><!-- comment --></script>
+	<script type="text/javascript">dojo.require("dojox.image.Lightbox");</script>
+	<link rel="stylesheet" type="text/css" href="/OnealFineArt/resources/dijit/themes/tundra/tundra.css"><!-- required for FF3 and Opera --></link>
+	<link rel="stylesheet" type="text/css" href="/OnealFineArt/resources/dojox/image/resources/Lightbox.css"><!-- required for FF3 and Opera --></link>
+</head>
+
+<body class="tundra">
+	<div id="lb-one">
+   		<a dojoType="dojox.image.Lightbox" title="foo" href="http://localhost:8080/OnealFineArt/renderimage/get?id=8">Show Foo</a>
+   		<a dojoType="dojox.image.Lightbox" title="bar" href="/OnealFineArt/resources/images/slideshow/02.jpg">Show Bar</a>
+	</div>
+	
+	<tiles:insertAttribute name="body" />
+</body>
+</html>

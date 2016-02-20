@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_art_fine_oneal_domain_SpecialGroup" object="${specialgroup}" path="/admin/manage/specialgroup" z="VZsv1XUFd80FxjIESJD0kFZQGlQ=">
+        <field:display field="name" id="s_com_art_fine_oneal_domain_SpecialGroup_name" object="${specialgroup}" z="rEpJZu82QdRSryaFYSm6ehzydPc="/>
+        <field:display field="description" id="s_com_art_fine_oneal_domain_SpecialGroup_description" object="${specialgroup}" z="9MQxChiC1kve5oguPgVv3kevlaU="/>
+        <field:display field="price" id="s_com_art_fine_oneal_domain_SpecialGroup_price" object="${specialgroup}" z="HyQS7X2B20AXSahDLo9pAWeMoEE="/>
+        <field:display date="true" dateTimePattern="${specialGroup_startdate_date_format}" field="startDate" id="s_com_art_fine_oneal_domain_SpecialGroup_startDate" object="${specialgroup}" z="QP+Nco21XqUJUpvXDCQqOfpF8Ag="/>
+        <field:display date="true" dateTimePattern="${specialGroup_enddate_date_format}" field="endDate" id="s_com_art_fine_oneal_domain_SpecialGroup_endDate" object="${specialgroup}" z="2qWXxw0+GNtQhWg0es/o6GOk70I="/>
+        <field:display field="artworks" id="s_com_art_fine_oneal_domain_SpecialGroup_artworks" object="${specialgroup}" z="eKN9vh6jI6uXU//Xziyzz7a3BRg="/>
+        <field:display date="true" dateTimePattern="${specialGroup_createdate_date_format}" field="createDate" id="s_com_art_fine_oneal_domain_SpecialGroup_createDate" object="${specialgroup}" z="BZ7lemeWJouVP4g5Gqpl9ZDElFs="/>
+    </page:show>
+</div>

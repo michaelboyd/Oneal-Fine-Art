@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_art_fine_oneal_domain_SpecialGroup" items="${specialgroups}" z="X9LFB61J8tPjbdFQocqgLxUQ7/c=">
+        <table:table data="${specialgroups}" id="l_com_art_fine_oneal_domain_SpecialGroup" path="/admin/manage/specialgroup" z="ew94QlI9XpPjXegB7dBG451FyK8=">
+            <table:column id="c_com_art_fine_oneal_domain_SpecialGroup_name" property="name" z="o9M57Pe/U1UFWXqxDjdM+rUEjYs="/>
+            <table:column id="c_com_art_fine_oneal_domain_SpecialGroup_description" property="description" z="nuuyxkG0r/tNUBjyL2qY3pAkndQ="/>
+            <table:column id="c_com_art_fine_oneal_domain_SpecialGroup_price" property="price" z="v9pCnBL4o5BSaMxnUe0lKlZgYh4="/>
+            <table:column date="true" dateTimePattern="${specialGroup_startdate_date_format}" id="c_com_art_fine_oneal_domain_SpecialGroup_startDate" property="startDate" z="XiXtN5mrJv4RYIobRBwoQCMP+uY="/>
+            <table:column date="true" dateTimePattern="${specialGroup_enddate_date_format}" id="c_com_art_fine_oneal_domain_SpecialGroup_endDate" property="endDate" z="82pgTlrhyHJTsN6uPQjEBWuwLfM="/>
+            <table:column date="true" dateTimePattern="${specialGroup_createdate_date_format}" id="c_com_art_fine_oneal_domain_SpecialGroup_createDate" property="createDate" z="PFSeCiejOLJybf/jklCXl8VOTFo="/>
+        </table:table>
+    </page:list>
+</div>

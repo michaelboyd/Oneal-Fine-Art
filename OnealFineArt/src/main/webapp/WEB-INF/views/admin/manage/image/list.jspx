@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_art_fine_oneal_domain_Image" items="${images}" render="true" z="user-managed">
+        <table:table data="${images}" id="l_com_art_fine_oneal_domain_Image" path="/admin/manage/image" render="false" z="user-managed">
+            <table:column date="true" dateTimePattern="${image_createdate_date_format}" id="c_com_art_fine_oneal_domain_Image_createDate" property="createDate" z="uSepEW10xJmpOuX6NpjmnBy3Arg="/>
+            <table:column id="c_com_art_fine_oneal_domain_Image_artwork" property="artwork" z="xc+MTAiPJRf/PnEU/3e2Su4LWwk="/>
+            <table:column id="c_com_art_fine_oneal_domain_Image_imageFiles" property="imageFiles" render="false" z="user-managed"/>
+            <table:column id="c_com_art_fine_oneal_domain_Image_file" property="file" render="false" z="user-managed"/>
+            <img src="/OnealFineArt/renderimage/get?id=${thumbImageId}"/>
+            <table:column id="c_com_art_fine_oneal_domain_Image_thumbImageId" property="thumbImageId" z="NuDRoryWsDAmbWQZW7qCb/3wfvY="/>
+            <table:column id="c_com_art_fine_oneal_domain_Image_imageType" property="imageType" z="0K9tUf4GQt3xymu8l05LhgG9ZtU="/>
+        </table:table>
+        <table>
+            <thead>
+                <tr>
+                    <th/>
+                    <th>Artist</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Create Date</th>
+                    <th/>
+                    <th/>
+                    <th/>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${images}" var="image">
+                    <tr>
+                        <td align="center">
+                            <img alt="${image.artwork.title}" src="/OnealFineArt/renderimage/get?id=${image.thumbImageId}" title="${image.artwork.title}"/>
+                        </td>
+                        <td>
+                            <c:out value="${image.artwork.artist.firstName}"/>
+                            <c:out value=" "/>
+                            <c:out value="${image.artwork.artist.lastName}"/>
+                        </td>
+                        <td>
+                            <c:out value="${image.artwork.title}"/>
+                        </td>
+                        <td>
+                            <c:out value="${image.imageType}"/>
+                        </td>
+                        <td>
+                            <fmt:formatDate value="${image.createDate}"/>
+                        </td>
+                        <td class="utilbox">
+                            <spring:url value="/admin/manage/image/${image.id}" var="show_form_url"/>
+                            <spring:url value="/resources/images/show.png" var="show_image_url"/>
+                            <spring:message arguments="Image" code="entity_show" htmlEscape="false" var="show_label"/>
+                            <a alt="${fn:escapeXml(show_label)}" href="${fn:escapeXml(show_form_url)}" title="${fn:escapeXml(show_label)}">
+                                <img alt="${fn:escapeXml(show_label)}" class="image" src="${fn:escapeXml(show_image_url)}" title="${fn:escapeXml(show_label)}"/>
+                            </a>
+                        </td>
+                        <td class="utilbox">
+                            <spring:url value="/admin/manage/image/${image.id}" var="update_form_url">
+                                <spring:param name="form"/>
+                            </spring:url>
+                            <spring:url value="/resources/images/update.png" var="update_image_url"/>
+                            <spring:message arguments="Image" code="entity_update" htmlEscape="false" var="update_label"/>
+                            <a alt="${fn:escapeXml(update_label)}" href="${fn:escapeXml(update_form_url)}" title="${fn:escapeXml(update_label)}">
+                                <img alt="${fn:escapeXml(update_label)}" class="image" src="${fn:escapeXml(update_image_url)}" title="${fn:escapeXml(update_label)}"/>
+                            </a>
+                        </td>
+                        <td class="utilbox">
+                            <spring:url value="/admin/manage/image/${image.id}" var="delete_form_url"/>
+                            <spring:url value="/resources/images/delete.png" var="delete_image_url"/>
+                            <form:form action="${fn:escapeXml(delete_form_url)}" method="DELETE">
+                                <spring:message arguments="Image" code="entity_delete" htmlEscape="false" var="delete_label"/>
+                                <c:set var="delete_confirm_msg">
+                                    <spring:escapeBody javaScriptEscape="true">
+                                        <spring:message code="entity_delete_confirm"/>
+                                    </spring:escapeBody>
+                                </c:set>
+                                <input alt="${fn:escapeXml(delete_label)}" class="image" onclick="return confirm('${delete_confirm_msg}');" src="${fn:escapeXml(delete_image_url)}" title="${fn:escapeXml(delete_label)}" type="image" value="${fn:escapeXml(delete_label)}"/>
+                                <c:if test="${not empty param.page}">
+                                    <input name="page" type="hidden" value="1"/>
+                                </c:if>
+                                <c:if test="${not empty param.size}">
+                                    <input name="size" type="hidden" value="${fn:escapeXml(param.size)}"/>
+                                </c:if>
+                            </form:form>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </page:list>
+</div>

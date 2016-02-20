@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_controller" render="false" z="user-managed">
+            <menu:item id="i_controller__galleryindex_id" messageCode="global_generic" url="/gallery/index" z="4bfsx0SreAXSlGPJVCo8adG1gY8="/>
+            <menu:item id="i_controller__adminindex_id" messageCode="global_generic" url="/admin/index" z="Vqqut04Ar2YjWWvud7/zWavBC+8="/>
+            <menu:item id="i_controller__renderimageindex_id" messageCode="global_generic" url="/renderimage/index" z="kdInxatjWOM2A+Az/CeRrwTlpcc="/>
+            <menu:item id="i_controller__aboutindex_id" messageCode="global_generic" url="/about/index" z="5HL0Fr0lnDOrNYvN4c4FOMUcxEg="/>
+            <menu:item id="i_controller__initsessionindex_id" messageCode="global_generic" url="/initsession/index" z="TtWSd6Hp9DkxDqCzXHB0pR7UKPk="/>
+        </menu:category>
+        <menu:category id="c_artist" render="false" z="user-managed">
+            <menu:item id="i_artist_new" messageCode="global_menu_new" url="/admin/manage/artist?form" z="60lB/4Ab9MZx4Ls+RiOslwxT8wY="/>
+            <menu:item id="i_artist_list" messageCode="global_menu_list" url="/admin/manage/artist?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Qga9NEuzmUnG1gblREQFLMFEg04="/>
+        </menu:category>
+        <menu:category id="c_artwork" render="false" z="user-managed">
+            <menu:item id="i_artwork_new" messageCode="global_menu_new" url="/admin/manage/artwork?form" z="GJ7ChlfRn8b3qorrC7Jm8QAUX5o="/>
+            <menu:item id="i_artwork_list" messageCode="global_menu_list" url="/admin/manage/artwork?page=1&amp;size=${empty param.size ? 10 : param.size}" z="lyJG5yeQWERwMh86TCRmPBk8cNM="/>
+        </menu:category>
+        <menu:category id="c_image" render="false" z="user-managed">
+            <menu:item id="i_image_new" messageCode="global_menu_new" url="/admin/manage/image?form" z="V0GaxpHgckzjhHMsakWEQHvYhQ0="/>
+            <menu:item id="i_image_list" messageCode="global_menu_list" url="/admin/manage/image?page=1&amp;size=${empty param.size ? 10 : param.size}" z="YFnoSNVJPNztbkJQj1+ZhGP+GXs="/>
+            <menu:item id="fi_image_artwork" messageCode="global_menu_find" url="/admin/manage/image?find=ByArtwork&amp;form" z="DBdSvVLhg+knbeXvhOjbtI0zGjc="/>
+        </menu:category>
+        <menu:category id="c_specialgroup" render="false" z="user-managed">
+            <menu:item id="i_specialgroup_new" messageCode="global_menu_new" url="/admin/manage/specialgroup?form" z="K+guF2hajO0nRJE9JRWL9eNwizU="/>
+            <menu:item id="i_specialgroup_list" messageCode="global_menu_list" url="/admin/manage/specialgroup?page=1&amp;size=${empty param.size ? 10 : param.size}" z="BQbG7VcDLDuP/EpTIV8y28BZzGc="/>
+        </menu:category>
+        <menu:category id="c_seleniumtests" render="false" z="user-managed">
+            <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
+        </menu:category>
+        <menu:category id="c_view" render="false" z="user-managed">
+            <menu:item id="i_view__admin_manage_commonartworktable_id" messageCode="global_generic" url="/admin/manage/common/artworktable" z="t3N/WlY3Hh/0N4v+iRK8oBqBtQ8="/>
+            <menu:item id="i_view__gallery_artwork_slideshowslideshow_id" messageCode="global_generic" url="/gallery/artwork/slideshow/slideshow" z="SewJ0plodTXhUif2pYRHFKtGGtE="/>
+            <menu:item id="i_view__slideshowslideshow_id" messageCode="global_generic" url="/slideshow/slideshow" z="HKQ37M5cCTaVjWnBjUZIsC+sPRo="/>
+            <menu:item id="i_view__lightboxlightbox_id" messageCode="global_generic" url="/lightbox/lightbox" z="fLu6wBMY6UDiyZZqdHWZ036BUK4="/>
+        </menu:category>
+        <menu:category id="c_siteinfo" render="false" z="user-managed">
+            <menu:item id="i_siteinfo_new" messageCode="global_menu_new" url="/admin/manage/siteinfo?form" z="Y7pnGD+bHvDO2YSufs/N8/KzhOY="/>
+            <menu:item id="i_siteinfo_list" messageCode="global_menu_list" url="/admin/manage/siteinfo?page=1&amp;size=${empty param.size ? 10 : param.size}" z="iZTUJR8SfL1rVXgk25x8zussRVc="/>
+            <menu:item id="fi_siteinfo_infotype" messageCode="global_menu_find" url="/admin/manage/siteinfo?find=ByInfoType&amp;form" z="FTufvlDk8tPhXFW4WPJcZytp5kY="/>
+        </menu:category>
+    </menu:menu>
+</div>

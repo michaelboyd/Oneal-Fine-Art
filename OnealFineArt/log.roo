@@ -1,0 +1,552 @@
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-10 18:14:55
+project --topLevelPackage com.art.fine.oneal --projectName OnealFineArt --java 6
+persistence setup --database MYSQL --provider HIBERNATE --databaseName oneal --userName mdb --password mdb
+enum type --class ~.utils.ImageSize
+enum constant --name thumb
+enum constant --name big
+enum constant --name fullSize
+entity --class ~.domain.Artist --testAutomatically
+field string --fieldName firstName --notNull true
+field string --fieldName lastName  --notNull true
+field string --fieldName biography --notNull true --sizeMax 5000
+field date   --fieldName createDate --type java.util.Date --dateTimeFormatPattern MM-dd-yyyy --notNull true
+entity --class ~.domain.Artwork --testAutomatically
+field string  --fieldName title --notNull true
+field string  --fieldName description --notNull true --sizeMax 5000
+field number  --type double --fieldName width --notNull true
+field number  --type double --fieldName height --notNull true
+field number  --type double --fieldName price --notNull true
+field boolean --fieldName negotiable --notNull true --value 0
+field date    --fieldName createDate --type java.util.Date --dateTimeFormatPattern MM-dd-yyyy --notNull true
+entity --class ~.domain.Image --testAutomatically
+field string --fieldName caption
+field string --fieldName fileName --notNull true
+field enum   --fieldName imageSize --type ~.utils.ImageSize --notNull true
+field date   --fieldName createDate --type java.util.Date --dateTimeFormatPattern MM-dd-yyyy --notNull true
+entity --class ~.domain.SpecialGroup --testAutomatically
+field string --fieldName name --notNull true
+field string --fieldName description --notNull true --sizeMax 5000
+field number --type double --fieldName price --notNull true
+field date   --fieldName startDate --type java.util.Date --dateTimeFormatPattern MM-dd-yyyy
+field date   --fieldName endDate   --type java.util.Date --dateTimeFormatPattern MM-dd-yyyy
+field date   --fieldName createDate --type java.util.Date --dateTimeFormatPattern MM-dd-yyyy --notNull true
+field set --fieldName artworks --type ~.domain.Artwork --class ~.domain.Artist
+field set --fieldName images --type ~.domain.Image --class ~.domain.Artwork
+field set --fieldName specialGroups --type ~.domain.SpecialGroup --class ~.domain.Artwork --mappedBy artworks
+field set --fieldName artworks --type ~.domain.Artwork --class ~.domain.SpecialGroup
+field reference --fieldName artist --type ~.domain.Artist --class ~.domain.Artwork --notNull true --joinColumnName artist_id 
+field reference --fieldName artwork --type ~.domain.Artwork --class ~.domain.Image --notNull true --joinColumnName artwork_id
+web mvc setup
+web mvc controller --class ~.web.GalleryController --preferredMapping /gallery
+web mvc controller --class ~.web.AdminController   --preferredMapping /admin
+web mvc scaffold --class ~.web.ArtistController       --path /admin/manage/artist       --backingType ~.domain.Artist
+web mvc scaffold --class ~.web.ArtworkController      --path /admin/manage/artwork      --backingType ~.domain.Artwork
+web mvc scaffold --class ~.web.ImageController        --path /admin/manage/image        --backingType ~.domain.Image
+web mvc scaffold --class ~.web.SpecialGroupController --path /admin/manage/specialgroup --backingType ~.domain.SpecialGroup
+selenium test --controller ~.web.ArtistController
+selenium test --controller ~.web.ArtworkController
+selenium test --controller ~.web.ImageController
+selenium test --controller ~.web.SpecialGroupController
+security setup
+logging setup --level INFO --package PROJECT
+perform eclipse
+perform tests
+// script --file c:\Users\BigDaddy\roo_scripts\oneal.roo
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-10 18:19:54
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-10 21:13:35
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-11 00:02:44
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-11 22:06:46
+// [failed] perform tests
+perform tests
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-11 22:48:50
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-11 23:07:25
+perform clean
+perform clean
+backup
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-11 23:32:27
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-12 08:22:55
+perform clean
+perform clean
+backup
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-12 08:42:40
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-13 09:33:23
+perform clean
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-13 09:50:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-13 10:08:13
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-13 10:08:35
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-13 10:09:01
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-13 10:42:53
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-13 10:43:13
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-13 11:00:40
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-13 11:00:54
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-13 11:08:56
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-13 11:09:09
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-13 11:10:23
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-13 11:11:20
+perform clean
+perform tests
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-13 11:45:20
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 00:16:28
+perform clean
+perform clean
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 00:57:12
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 01:04:13
+perform clean
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 01:10:04
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 01:42:04
+perform clean
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 01:51:27
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 10:12:44
+// [failed] perform assembly
+perform assembly 
+perform command --mavenCommand compile
+perform tests
+perform clean
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 10:24:37
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 10:39:11
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 10:56:06
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 11:20:39
+perform clean
+perform package
+backup
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 11:38:42
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 11:42:37
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 13:13:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 14:57:06
+web mvc controller --class ~.web.RenderImageController --preferredMapping /renderimage
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 15:43:30
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 15:43:54
+backup
+entity --class ~.domain.ImageFile --testAutomatically
+field string --fieldName fileName --notNull true
+field enum   --fieldName imageSize --type ~.utils.ImageSize --notNull true
+field date   --fieldName createDate --type java.util.Date --dateTimeFormatPattern MM-dd-yyyy --notNull true
+field set --fieldName imageFiles --type ~.domain.ImageFile --class ~.domain.Image
+perform tests
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 15:48:09
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 15:53:02
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 15:57:20
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-14 15:57:30
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-14 16:08:42
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-15 22:58:27
+perform tests
+perform tests
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-15 23:44:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-16 00:37:41
+// [failed] quit
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-16 00:46:33
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-16 00:46:42
+backup
+backup
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-16 01:05:23
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-16 19:15:15
+web mvc controller --class ~.web.AboutController       --preferredMapping /about
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-16 23:02:10
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-16 23:02:20
+backup
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-16 23:03:39
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-16 23:03:52
+enum type --class ~.utils.ImageType
+enum constant --name mainPicture
+enum constant --name signature
+enum constant --name secondary1
+enum constant --name secondary2
+enum constant --name secondary3
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-16 23:04:25
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-16 23:04:41
+focus --class ~.domain.ImageFile
+field enum   --fieldName imageType  --type ~.utils.ImageType --notNull true
+focus --class ~.domain.Image
+field enum   --fieldName imageType  --type ~.utils.ImageType --notNull true
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-16 23:12:51
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-16 23:13:00
+perform tests
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-17 00:03:35
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-17 00:03:55
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-17 00:58:35
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-17 08:38:44
+backup
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-17 08:39:34
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-17 18:25:47
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-18 00:19:39
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-18 08:41:17
+perform tests
+backup
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-18 08:55:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-18 20:40:42
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-18 21:33:36
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-18 21:33:47
+perform clean
+perform clean
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 00:25:09
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 00:39:24
+perform clean
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 00:40:55
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 00:50:47
+perform clean
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 00:53:00
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 00:57:48
+// [failed] perform clean
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 01:18:25
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 01:23:29
+backup
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 01:24:13
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 07:50:51
+perform clean
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 07:54:10
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 18:37:01
+perform clean
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 18:39:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 19:12:01
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 20:10:18
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 20:25:34
+perform clean
+perform tests
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 21:17:31
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 21:17:46
+perform clean
+perform clean
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 21:20:27
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 21:21:08
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 21:21:33
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 21:21:47
+perform package
+// [failed] quit
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 21:22:57
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 21:31:58
+backup
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 21:33:42
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 22:20:45
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 22:24:20
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 22:40:31
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 23:35:45
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 23:38:55
+perform clean
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 23:39:37
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 23:40:52
+perform packag
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-19 23:41:59
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-19 23:49:15
+perform clean
+perform clean
+perform clean
+perform clean
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-20 00:07:46
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-20 00:55:38
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-20 00:57:22
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-20 09:46:50
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-20 10:02:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-20 13:15:02
+backup
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-20 13:16:10
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-21 12:52:56
+web mvc view --path /admin/manage/common --viewName artworktable --title artworkTable
+perform clean
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-21 13:18:25
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-21 14:39:53
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-21 15:04:44
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-21 15:08:01
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-22 20:41:58
+focus --class ~.domain.Artist
+field string --fieldName middleName
+field boolean --fieldName moreAvailable --primitive
+focus --class ~.domain.Artwork
+field boolean --fieldName framed --primitive
+focus --class ~.domain.Artist 
+field boolean --fieldName hasOtherAvailable --primitive --notNull true --value 0
+backup
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-23 00:05:01
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-23 08:15:25
+focus --class ~.domain.ImageFile 
+finder list --class ~.domain.ImageFile
+field reference --fieldName image --type ~.domain.Image --class ~.domain.ImageFile --notNull true --joinColumnName image_id
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-23 08:43:22
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-24 22:43:10
+finder list --class ~.domain.ImageFile
+finder list --class ~.domain.ImageFile --depth 2 --filter ImageSize
+finder list --class ~.domain.ImageFile --depth 2 --filter ByImageAnd
+finder add --finderName findImageFilesByImageAndImageSize
+backup
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-25 00:35:26
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-25 19:47:22
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 00:04:15
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-26 00:04:37
+backup
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 00:05:15
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-26 08:05:24
+backup
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 08:46:55
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-26 18:16:23
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 18:22:49
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-26 18:52:50
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 20:10:48
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-26 20:11:00
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 20:25:33
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-26 20:25:41
+perform clean
+backup
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 20:28:32
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-26 20:44:37
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 20:47:16
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-26 20:47:28
+perform clean
+perform clean
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-26 21:31:20
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 07:22:57
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 07:23:35
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 07:23:46
+perform clean
+entity --class ~.domain.AboutInfo --testAutomatically
+field string --fieldName historyInfo --sizeMax 10000
+field string --fieldName makeOfferInfo --sizeMax 5000
+field string --fieldName artGroupingInfo --sizeMax 5000
+field string --fieldName negotiableInfo --sizeMax 5000
+field string --fieldName contactName
+field string --fieldName contactEmail
+field string --fieldName contactAddress
+web mvc scaffold --class ~.web.AboutInfoController        --path /admin/manage/about            --backingType ~.domain.AboutInfo
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 07:54:24
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 07:55:06
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 07:57:27
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 07:57:34
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 07:58:47
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 07:58:56
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 08:00:22
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 08:00:37
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 08:01:41
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 08:01:51
+web mvc scaffold --class ~.web.AboutInfoController --path /admin/manage/about --backingType ~.domain.AboutInfo
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 08:03:34
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 08:04:43
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 08:21:00
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 08:21:12
+enum type --class ~.utils.AboutInfoType
+enum constant --name History
+enum constant --name MakeOffer
+// [failed] enum constant --name Grouping
+enum constant --name Negotiable
+enum constant --name ContactName
+enum constant --name ContactEmail
+enum constant --name ContactAddress
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 08:28:13
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 08:28:33
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 08:32:18
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 08:32:27
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 09:08:50
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 09:09:01
+entity --class ~.domain.SiteInfo --testAutomatically
+field enum   --fieldName infoType --type ~.utils.InfoType --notNull true
+field string --fieldName info --sizeMax 10000
+field date   --fieldName createDate --type java.util.Date --dateTimeFormatPattern MM-dd-yyyy --notNull true
+web mvc scaffold --class ~.web.SiteInfoController         --path /admin/manage/siteinfo         --backingType ~.domain.SiteInfo
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 09:10:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 09:10:17
+perform clean
+backup
+perform package
+backup
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 11:28:51
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 14:04:32
+finder list --class ~.domain.Image
+finder add --finderName findImagesByArtwork --class ~.domain.Image
+perform clean
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 14:51:42
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 14:51:53
+finder list --class ~.domain.ImageFile
+finder list --class ~.domain.Artist
+finder list --class ~.domain.Artist --depth 2
+finder list --class ~.domain.Artist --depth 2 --filter Artworks
+perform clean
+backup
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 16:00:49
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 17:52:34
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 18:28:06
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 18:28:22
+perform clean
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 18:30:03
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 18:44:27
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 18:45:11
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 18:51:55
+// [failed] perform clean
+perform clean
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 18:53:15
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 19:09:12
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 19:54:30
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 19:54:45
+perform clean
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 19:55:23
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 19:55:37
+perform assembly
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 21:12:58
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 21:22:06
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 21:47:45
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-27 22:13:14
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-27 23:14:39
+perform clean
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-28 00:16:31
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-28 00:35:18
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-28 01:31:10
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-28 01:31:25
+perform clean
+perform package
+// [failed] quit
+exit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-28 01:32:53
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-28 09:04:37
+finder list --class ~.domain.ImageFile
+finder add --finderName findImageFilesByImage --class ~.domain.ImageFile
+// [failed] perform clean
+perform clean
+backup
+perform package
+perform clean
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-28 10:04:26
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-28 12:05:06
+backup
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-28 12:07:39
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-28 14:04:14
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-28 14:09:17
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-28 14:37:13
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-28 21:36:39
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-28 22:56:03
+perform clean
+backup
+perform package
+finder list --class ~.domain.SiteInfo
+finder add --finderName findSiteInfoesByInfoType --class ~.domain.SiteInfo
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 01:02:02
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-29 01:02:24
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 01:03:38
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-29 10:17:37
+perform package
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 10:19:31
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-29 10:32:21
+backup
+perform clean
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 10:41:51
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-29 10:42:05
+// [failed] web mvc controller --class ~.web.HomeController --preferredMapping /
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 10:50:15
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-29 10:51:48
+perform clean
+web mvc controller --class ~.web.InitSessionController --preferredMapping /initsession
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 12:03:39
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-29 12:04:12
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 12:06:10
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-29 12:06:20
+perform clean
+finder list --class ~.domain.ImageFile
+finder add --finderName findImageFilesByImageSize --class ~.domain.ImageFile
+web mvc view --path /gallery/artwork/slideshow --viewName slideshow --title ArtworkSlideShow
+web mvc view --path /slideshow --title slideshow --viewName slideshow
+quit
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 17:11:17
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-29 17:11:31
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-29 17:38:58
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-08-31 21:15:11
+perform clean
+perform clean
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-08-31 23:54:45
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-09-01 18:08:06
+backup
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-09-01 19:43:13
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log opened at 2011-09-01 21:48:52
+web mvc view --path /lightbox --title lightbox --viewName lightbox
+perform clean
+perform package
+// Spring Roo 1.1.5.RELEASE [rev d3a68c3] log closed at 2011-09-02 00:03:24
+// Spring Roo 2.0.0.M1 [rev 33e5d76] log opened at 2015-09-04 11:04:15
+// Spring Roo 2.0.0.M1 [rev 33e5d76] log closed at 2015-09-04 12:58:19
+// Spring Roo 2.0.0.M1 [rev 33e5d76] log opened at 2015-09-07 13:57:14
+// Spring Roo 2.0.0.M1 [rev 33e5d76] log closed at 2015-09-07 14:00:32

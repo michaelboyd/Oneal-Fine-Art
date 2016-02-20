@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="admin" name="admin/manage/specialgroup/list">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/specialgroup/list.jspx"/>
+        <put-attribute name="title" value="List Special Groups"/>
+    </definition>
+<definition extends="admin" name="admin/manage/specialgroup/show">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/specialgroup/show.jspx"/>
+        <put-attribute name="title" value="Show Special Group"/>
+    </definition>
+<definition extends="admin" name="admin/manage/specialgroup/create">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/specialgroup/create.jspx"/>
+        <put-attribute name="title" value="Create Special Group"/>
+    </definition>
+<definition extends="admin" name="admin/manage/specialgroup/update">
+        <put-attribute name="body" value="/WEB-INF/views/admin/manage/specialgroup/update.jspx"/>
+        <put-attribute name="title" value="Update Special Group"/>
+    </definition>
+</tiles-definitions>

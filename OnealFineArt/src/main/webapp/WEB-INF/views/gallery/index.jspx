@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <jsp:output omit-xml-declaration="yes"/>
+  <spring:message code="label_gallery_index" htmlEscape="false" var="title"/>
+  
+  <util:panel id="title" title="${title}">
+
+	<script type="text/javascript">
+		dojo.require("dojo.NodeList-traverse");
+		var count = 0;
+		var currentItem = 1;
+		dojo.ready(function(){
+			count = dojo.query("img", "dojo-slideshow").length;
+			setDecription(dojo.query(".active-image").attr("title"))
+			setInterval("dojoSlideShow()", 3000);
+		});
+		function dojoSlideShow(){
+			
+			var active = dojo.query(".active-image");
+			var next = active.next("img");
+			active.removeClass();
+			if(next == "") {
+				currentItem = 0;
+				next = dojo.query("#dojo-slideshow img").first();
+			}
+			currentItem++;
+			next.addClass("active-image");
+			setDecription(next.attr("title"));
+			
+		}
+
+		function setDecription(title) {
+			dojo.byId("slideshow-desc").innerHTML = title;
+		}
+		
+		function showArtwork(id) {
+			window.location = "/OnealFineArt/gallery/artwork/" + id;
+		}
+	</script>
+	
+	<div id="dojo-slideshow">
+
+		<img onclick="showArtwork('${activeImage.image.artwork.id}')" src="/OnealFineArt/renderimage/get?id=${activeImage.id}" title="${activeImage.image.artwork.artist.name}: ${activeImage.image.artwork.title}" class="active-image"/>
+		<c:forEach items="${imageFiles}" var="imageFile">
+			<img onclick="showArtwork('${imageFile.image.artwork.id}')" src="/OnealFineArt/renderimage/get?id=${imageFile.id}" title="${imageFile.image.artwork.artist.name}: ${imageFile.image.artwork.title}"/>
+		</c:forEach>		
+
+		<div id="slideshow-desc"></div>
+	</div>	    
+    
+  </util:panel>
+</div>
